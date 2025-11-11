@@ -4,6 +4,115 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+ /* Estilo general */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+/* Contenedor principal */
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 60px;
+}
+
+/* Sección del bloque */
+.bloque {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1000px;
+  width: 100%;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Columna de texto */
+.texto {
+  flex: 3;
+  padding-right: 30px;
+}
+
+.titulo {
+  text-align: center;
+  color: #004c63;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.descripcion {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Columna de imagen */
+.imagen {
+  flex: 1;
+  text-align: center;
+}
+
+.imagen img {
+  width: 100%;
+  max-width: 220px;
+  border: 2px solid #004c63;
+  border-radius: 5px;
+}
+
+.pie {
+  font-size: 14px;
+  color: #555;
+  margin-top: 8px;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 768px) {
+  .bloque {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .texto {
+    padding-right: 0;
+  }
+
+  .imagen {
+    margin-top: 20px;
+  }
+}
+/* Estilo de tabla informativa */
+.tabla-bloque {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  background-color: #fdfdfd;
+  font-size: 15px;
+}
+
+.tabla-bloque th, 
+.tabla-bloque td {
+  border: 1px solid #555;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabla-bloque th {
+  background-color: #004c63;
+  color: white;
+  font-weight: bold;
+}
+
+.tabla-bloque tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
