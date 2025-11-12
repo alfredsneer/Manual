@@ -130,8 +130,8 @@
       <div class="texto">
         <h1 class="titulo">RETARDO A LA DESCONEXIÓN</h1>
         <p class="descripcion">
-          <strong>Descripción Breve</strong><br><br>
-          La salida no se activa hasta que ha transcurrido un tiempo de retardo configurado.
+          <strong>Descripción Breve</strong><br>
+          La salida de retardo a la desconexión se desactiva tras haber transcurrido un tiempo configurado
         </p>
 <table class="tabla-bloque">
   <thead>
@@ -143,33 +143,71 @@
   <tbody>
     <tr>
       <td>Entrada Trg</td>
-      <td>La entrada Trg (Trigger) dispara el temporizador de retardo a la conexión.</td>
+      <td>Un flanco descendente (transición de 1 a 0) en la entrada Trg (Trigger) inicia el tiempo de retardo a la desconexión.</td>
+    </tr>
+    <tr>
+      <td>Entrada R</td>
+      <td>
+        Por medio de la entrada R (Reset), el tiempo de retardo a la desconexión y la salida se ponen a 0.
+        Reset tiene prioridad sobre Trg.
+      </td>
     </tr>
     <tr>
       <td>Parámetro</td>
       <td>
-        T: tiempo de retardo tras el que se activa la salida (transición de la señal de salida de 0 a 1).<br>
+        T: la salida se desactiva una vez transcurrido el tiempo de retardo T (transición de la señal de salida de 1 a 0). 
         Remanencia activada = el estado se guarda de forma remanente.
       </td>
     </tr>
     <tr>
       <td>Salida Q</td>
-      <td>Q se activa una vez expirado el tiempo parametrizado, si Trg sigue activada.</td>
+      <td>Q se activa con un disparo en la entrada Trg y permanece activada hasta que haya transcurrido el tiempo T.</td>
     </tr>
   </tbody>
 </table>
 
-        <p class="extra">
-La transición de 0 a 1 en la entrada Trg dispara el tiempo Ta (el tiempo actual en LOGO!).
-Si la entrada Trg sigue puesta a 1 por lo menos durante el tiempo T configurado, la salida se pone a 1 una vez expirado el tiempo T (la salida se activa con retardo respecto a la entrada).
-El tiempo se reinicializa si el estado de la entrada Trg cambia nuevamente a 0 antes de que expire el tiempo T.
-La salida se pone nuevamente a 0 cuando la señal en la entrada Trg es 0.
+        <p class="descripcion">
+          <br>
+          <strong>Parámetro T</strong>
         </p>
+            <ul style="list-style-type:square">
+            <li>Comparador analógico: Ax - Ay</li>
+            <li>Conmutador analógico de valor umbral: Ax</li>
+            <li>Amplificador analógico: Ax</li>
+            <li>Multiplexor analógico: AQ</li>
+            <li>Rampa analógica: AQ</li>   
+            <li>Instrucción aritmética: AQ</li>
+            <li>Regulador PI: AQ</li>
+            <li>Contador adelante/atrás: Cnt</li>
+            <br>
+            <p class="descripcion">
+            <strong>En los dispositivos 0BA7 y superiores se pueden utilizar adicionalmente los valores reales de las siguientes funciones preprogramadas:</strong>
+            </p>
+            <ul style="list-style-type:disc">
+            <li>Retardo a la conexión: Ta</li>
+            <li>Retardo a la desconexión: Ta</li>
+            <li>Retardo a la conexión/desconexión: Ta</li>
+            <li>Retardo a la conexión con memoria: Ta</li>
+            <li>Relé de barrido (salida de impulso): Ta</li>
+            <li>Relé de barrido activado por flancos: Ta</li>
+            <li>Generador de impulsos asíncrono: Ta</li>
+            <li>Interruptor de alumbrado para escalera: Ta</li>
+            <li>Interruptor multifuncional: Ta</li>
+            <li>Cronómetro: AQ</li>
+            <li>Filtro analógico: AQ</li>
+            <li>Valor medio: AQ</li>
+            <li>Máx/Mín: AQ</li>
+            <li>Selector de umbral: Fre</li>
+            </ul>
+        </ul>
+        <p>Una transición de 0 a 1 en la entrada Trg pone la salida Q a 1 inmediatamente.
+Cuando Trg cambia de 1 a 0, en LOGO! se vuelve a iniciar el tiempo T actual y la salida permanece activada. LOGO! pone la salida Q a 0 cuando Ta alcanza el valor especificado en T (Ta=T) (retardo a la desconexión).
+Si vuelve a activarse y desactivarse la entrada Trg, se inicia nuevamente el tiempo Ta.
+Mediante la entrada R (Reset) es posible poner a cero el tiempo Ta y la salida antes de expirar el tiempo Ta.</p>
       </div>
-
       <div class="imagen">
         <img src="bloques_imgs/Retardo a la desconexión.jpg" alt="Imagen del bloque" />
-        <p class="pie">Retardo a la conexión</p>
+        <p class="pie">Retardo a la desconexión</p>
       </div>
     </section>
   </main>
