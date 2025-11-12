@@ -68,10 +68,10 @@
                     <a href="Generador_aleatorio.html" class="dropdown-item">GENERADOR ALEATORIO</a>
                     <a href="Interruptor_de_alumbrado_p_escalera.html" class="dropdown-item">INTERRUPTOR DE ALUMBRADO PARA ESCALERA</a>
                     <a href="Interruptor_bifuncional.html" class="dropdown-item">INTERRUPTOR BIFUNCIONAL</a>
-                    <a href="Interruptor_semanal.html" class="dropdown-item">INTERRUPTOR SEMANAL</a>
-                    <a href="index.html" class="dropdown-item">INTERRUPTOR ANUAL</a>
-                    <a href="index.html" class="dropdown-item">RELOJ ASTRONÓMICO</a>
-                    <a href="index.html" class="dropdown-item">CRONÓMETRO</a>
+                    <a href="Interruptor_semanal.html" class="dropdown-item">INTERRUPTOR SEMANAL</a> 
+                    <a href="Interruptor_anual.html" class="dropdown-item">INTERRUPTOR ANUAL</a>
+                    <a href="Reloj_astronomico.html" class="dropdown-item">RELOJ ASTRONÓMICO</a>
+                    <a href="Cronometro.html" class="dropdown-item">CRONÓMETRO</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -130,7 +130,7 @@
       <div class="texto">
         <h1 class="titulo">RETARDO A LA CONEXIÓN</h1>
         <p class="descripcion">
-          <strong>Descripción Breve</strong><br><br>
+          <strong>Descripción Breve</strong><br>
           La salida no se activa hasta que ha transcurrido un tiempo de retardo configurado.
         </p>
 <table class="tabla-bloque">
@@ -158,15 +158,52 @@
     </tr>
   </tbody>
 </table>
-
-        <p class="extra">
-La transición de 0 a 1 en la entrada Trg dispara el tiempo Ta (el tiempo actual en LOGO!).
-Si la entrada Trg sigue puesta a 1 por lo menos durante el tiempo T configurado, la salida se pone a 1 una vez expirado el tiempo T (la salida se activa con retardo respecto a la entrada).
-El tiempo se reinicializa si el estado de la entrada Trg cambia nuevamente a 0 antes de que expire el tiempo T.
-La salida se pone nuevamente a 0 cuando la señal en la entrada Trg es 0.
+        <p class="descripcion">
+          <br>
+          <strong>Parámetro T</strong>
         </p>
+          <ul style="list-style-type:square">
+            <li>Comparador analógico: Ax - Ay</li>
+            <li>Conmutador analógico de valor umbral: Ax</li>
+            <li>Amplificador analógico: Ax</li>
+            <li>Multiplexor analógico: AQ</li>
+            <li>Rampa analógica: AQ</li>   
+            <li>Instrucción aritmética: AQ</li>
+            <li>Regulador PI: AQ</li>
+            <li>Contador adelante/atrás: Cnt</li>
+            <br>
+        <p class="descripcion">
+          <strong>En los dispositivos 0BA7 y superiores se pueden utilizar adicionalmente los valores reales de las siguientes funciones preprogramadas:</strong>
+        </p>
+          <ul style="list-style-type: disc;">
+            <li>Retardo a la conexión: Ta</li>
+            <li>Retardo a la desconexión: Ta</li>
+            <li>Retardo a la conexión/desconexión: Ta</li>
+            <li>Retardo a la conexión con memoria: Ta</li>
+            <li>Relé de barrido (salida de impulso): Ta</li>
+            <li>Relé de barrido activado por flancos: Ta</li>
+            <li>Generador de impulsos asíncrono: Ta</li>
+            <li>Interruptor de alumbrado para escalera: Ta</li>
+            <li>Interruptor multifuncional: Ta</li>
+            <li>Cronómetro: AQ</li>
+            <li>Filtro analógico: AQ</li>
+            <li>Valor medio: AQ</li>
+            <li>Máx/Mín: AQ</li>
+            <li>Selector de umbral: Fre</li>
+          </ul>
+          <br>
+        <p>La transición de 0 a 1 en la entrada Trg dispara el tiempo Ta (el tiempo actual en LOGO!).
+           Si la entrada Trg sigue puesta a 1 por lo menos durante el tiempo T configurado, la salida se pone a 1 una vez expirado el tiempo T (la salida se activa con retardo respecto a la entrada).
+           El tiempo se reinicializa si el estado de la entrada Trg cambia nuevamente a 0 antes de que expire el tiempo T.
+           La salida se pone nuevamente a 0 cuando la señal en la entrada Trg es 0.</p>
+        <h1 class="titulo">EJERCICIOS</h1>
+        <h5>EJERCICIO 1</h5>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, eveniet. Eveniet amet odit cumque voluptates distinctio non tempora ut reprehenderit nulla, eius dicta placeat fugiat perferendis, 
+          nobis quidem. Nihil, magnam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nulla quaerat, non quod assumenda debitis fugit vitae ad ab. Magnam rem fugiat numquam soluta totam animi! Aperiam 
+          exercitationem dolor soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus qui assumenda ducimus, odit pariatur numquam ipsa vero deserunt excepturi reiciendis id corrupti commodi, veniam 
+          consectetur blanditiis similique molestias aliquid eveniet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, animi. Ratione iste soluta impedit voluptate est amet voluptatum, deserunt dolores 
+          enim dolore ex consequuntur iure voluptas cum nulla vitae hic?</p>
       </div>
-
       <div class="imagen">
         <img src="bloques_imgs/Retardo a la conexión.jpg" alt="Imagen del bloque" />
         <p class="pie">Retardo a la conexión</p>
