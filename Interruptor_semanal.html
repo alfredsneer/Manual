@@ -128,12 +128,10 @@
 <main class="contenedor">
     <section class="bloque">
       <div class="texto">
-        <h1 class="titulo">TEMPORIZADOR SEMANAL</h1>
+        <h1 class="titulo">INTERRUPTOR ANUAL</h1>
         <p class="descripcion">
-          <strong>Cuidado</strong>
-          El LOGO! debe disponer de un reloj interno en tiempo real para poder utilizar esta función especial
           <strong>Descripción Breve</strong><br>
-          La salida se controla mediante una fecha de activación y desactivación configurable. Esta función soporta cualquier combinación posible de días de la semana.
+          La salida se controla mediante una fecha de activación y desactivación configurable. El temporizador puede configurarse para que se active anualmente, mensualmente, o bien con una base de tiempo personalizada. En cualquier modo, la salida del temporizador también puede configurarse como salida de impulso durante el período de tiempo definido. El período de tiempo puede configurase en el rango comprendido entre el 1 de enero de 2000 hasta el 31 de diciembre de 2099.
         </p>
 <table class="tabla-bloque">
   <thead>
@@ -144,40 +142,70 @@
   </thead>
   <tbody>
     <tr>
-      <td>Parámetros No1,, No2, No3</td>
-      <td>A través de los parámetros No1, No2, No3 se ajustan los momentos de conexión y desconexión de cada una de las levas ("Nocken" en alemán) del temporizador semanal. Para cada leva se especifican el día de la semana y la hora de conexión y desconexión.</td>
-    </tr>
-    <tr>
-      <td>Par</td>
+      <td>Parámetro</td>
       <td>
-        Indique si, al ser activado, el temporizador semanal debe funcionar durante un ciclo y desactivarse luego. El parámetro de impulso es válido para las tres levas
+        En el parámetro No (leva) se configuran el modo del temporizador, los momentos de conexión y desconexión del mismo, así como si la salida es una salida de impulso.
       </td>
     </tr>
     <tr>
       <td>Salida Q</td>
-      <td>Q se activa cuando se acciona la leva configurada</td>
+      <td>Q se activa si está conectada alguna de las levas configuradas.</td>
     </tr>
   </tbody>
 </table>
-        <br>
-        <p class="descripcion"><strong>Cronograma (tres ejemplos prácticos)</strong></p>
-        <img src="images/Cronograma.jpg" alt="" width="600" height="280">
+<br>
+        <p class="descripcion">
+          <strong>Cronogramas</strong>
+        </p>
+        <p><strong>Ejemplo 1: </strong>Anual está seleccionado, fecha de conexión = 2000.06.01, fecha de desconexión = 2099.08.31. La salida del temporizador se activa cada año desde el 1 de junio hasta el 31 de agosto.</p>
+        <img src="bloques_imgs/Ej1_anual.png" alt="">
+        <p><strong>Ejemplo 2: </strong>Anual está seleccionado, Salida de impulso está seleccionada, fecha de conexión = 2000.03.15, fecha de desconexión = 2099.**.**. El temporizador se activa durante un ciclo el 15 de marzo de cada año.</p>
+        <img src="bloques_imgs/Ej2_anual.png" alt="">
+        <p><strong>Ejemplo 3: </strong>Anual está seleccionado, tiempo de conexión = 2008.06.01, tiempo de desconexión = 2010.08.31. La salida del temporizador se activa el 1 de junio de 2008, 2009 y 2010, y permanece activada hasta el 31 de agosto.</p>
+        <img src="bloques_imgs/Ej3_anual.png" alt="">
+        <p><strong>Ejemplo 4: </strong>Anual está seleccionado, Salida de impulso está seleccionada, fecha de conexión = 2008.03.15, fecha de desconexión = 2010.**.**. El 15 de marzo de 2008, 2009 y 2010, la salida del temporizador se activa durante un ciclo.</p>
+        <img src="bloques_imgs/Ej4_anual.png" alt="">
+        <p><strong>Ejemplo 5: </strong>Mensual no está seleccionado, Anual no está seleccionado, tiempo de conexión = 2008.06.01, tiempo de desconexión = 2010.08.31. La salida del temporizador se activa el 1 de junio de 2008 y permanece activada hasta el 31 de agosto de 2010.</p>
+        <img src="bloques_imgs/Ej5_anual.png" alt="">
+        <p><strong>Ejemplo 6: </strong>Mensual no está seleccionado, Anual no está seleccionado, Salida de impulso está seleccionada, fecha de conexión = 2008.03.15, fecha de desconexión = ****.**.**. El 15 de marzo de 2008, el temporizador se activa durante un ciclo. Puesto que el temporizador no tiene acción mensual ni anual, se emite solo un impulso en la salida del temporizador en la fecha de conexión especificada.</p>
+        <img src="bloques_imgs/Ej6_anual.png" alt="">
+        <p><strong>Ejemplo 7: </strong>Anual está seleccionado, tiempo de conexión = 2008.12.15, tiempo de desconexión = 2010 01.07. El 15 de diciembre de 2008 y 2009, la salida del temporizador se activa hasta el 7 de enero del año siguiente. Tras desactivarse el temporizador el 7 de enero de 2010, NO se vuelve a activar el 15 de diciembre siguiente.</p>
+        <img src="bloques_imgs/Ej7_anual.png" alt="">
+        <p><strong>Ejemplo 8: </strong>Mensual activado, tiempo de conexión = 2008.**.01, tiempo de desconexión = 2010.**.05. A partir de 2008, la salida del temporizador se activa el primer día de cada mes y se desactiva el quinto día del mes. El temporizador sigue funcionando de esta manera hasta el último mes del año 2010.</p>
+        <img src="bloques_imgs/Ej8_anual.png" alt="">
+        <p class="descripcion">
+          <strong>Descripción de la función</strong>
+        </p>
+        <p>El temporizador anual activa o desactiva la salida en determinadas fechas de conexión y desconexión. Las activaciones y desactivaciones se ejecutan a las 00:00. Si la aplicación debe activarse a una hora diferente, utilice un temporizador semanal junto con un temporizador anual en el programa.</p>
+        <p>La fecha de conexión especifica el mes y el día en el que se activa el temporizador. La fecha de desconexión especifica el mes y el día en el que se desactiva el temporizador. Por lo que respecta a las fechas de conexión y desconexión, tenga en cuenta el orden de los campos. El primer campo define el año, el segundo, el mes y, el tercero, el día.</p>
+        <p>Si activa la casilla de verificación Mensual, la salida del temporizador se activa cada mes el día indicado como fecha de conexión y permanece activado hasta el día indicado como fecha de desconexión. El año de conexión especifica el primer año en el que se activa el temporizador. El año de desconexión especifica el último año en el que se desactiva el temporizador. 2099 es el último año posible.</p>
+        <p>Si activa la casilla de verificación Anual, la salida del temporizador se activa cada año el mes y día indicados como fecha de conexión y permanece activado hasta el mes y día indicado como fecha de desconexión. El año de conexión especifica el primer año en el que se activa el temporizador. El año de desconexión especifica el último año en el que se desactiva el temporizador. 2099 es el último año posible.</p>
+        <p>Si selecciona la casilla de verificación Salida de impulso, la salida del temporizador se activa durante un ciclo en la fecha de conexión indicada y se desactiva luego. Puede seleccionar que el temporizador sea impulsado mensual o anualmente, o bien una sola vez.</p>
+        <p>Si no activa ninguna de las casillas de verificación (Mensual, Anual o Impulso), puede definir un período específico mediante la fecha de conexión y desconexión. Este período puede abarcar un tiempo cualquiera.</p>
+        <p>Para procesos que deban activarse y desactivarse varias veces al año, pero en instantes irregulares, puede definir varios temporizadores anuales y combinar lógicamente sus salidas mediante un bloque de función OR.</p>
+        <ul>
+          <table>
+            <tbody>
+              <tr>
+                <td><img src="bloques_imgs/0BA0_anual.png" alt="" width="60" height="60"></td>
+                <td>Los ajustes Anual y Salida de impulso solo están disponibles en los dispositivos a partir de la serie 0BA6.
+                    El ajuste Mensual solo está disponible en los dispositivos a partir de la serie 0BA4.</td>
+              </tr>
+            </tbody>
+          </table>
+        </ul>
         <p class="descripcion">
           <strong>Descripción de la función</strong><br>
-          Cada temporizador semanal está equipado con tres levas. Para cada una de estas puede configurarse una intervalo de tiempo. Mediante las levas se predeterminan los momentos de conexión y desconexión. En un determinado momento, el temporizador semanal activa la salida, siempre y cuando esta no esté activada aún.
-          El temporizador semanal desactiva la salida en el momento de desconexión si este se ha configurado, o bien al final del ciclo si se ha especificado una salida de impulso. Si se ha definido un mismo momento de conexión y desconexión para un temporizador semanal, pero en distintas levas, se produce un conflicto. En este caso, la leva 3 tiene prioridad sobre la leva 2 y esta, a su vez, sobre la leva 1.
-          El estado de conexión del temporizador semanal depende del estado de las tres levas No1, No2 y No3
-          <br><strong>Momentos de conexión</strong><br>
-          El momento de conexión puede estar comprendido entre las 00:00 h y las 23:59 h. El momento de conexión también puede configurarse como señal de impulso. El bloque de temporizador se activa a la hora indicada durante un ciclo. Luego se desactiva la salida. En este caso, el momento de desconexión está desactivado, puesto que no se necesita.
-          <br><strong>Particularidades acerca de la configuración</strong><br>
-          El diálogo de propiedades del bloque contiene una ficha para cada una de las tres levas. Allí puede ajustar los días de la semana para las levas. Además, en cada ficha es posible definir el momento de conexión y desconexión de cada leva (en horas y minutos). Por tanto, el ciclo de conmutación mínimo es un minuto. En cada ficha también puede especificarse una salida de impulso para la leva.
-          Los momentos de conexión y desconexión pueden desactivarse individualmente, lo que permite alcanzar ciclos de conmutacion de más de un día. Por ejemplo, puede conectar el temporizador con la leva 1 el lunes a las 7:00 h y desconectarlo con la leva 2 el miércoles a las 13:07 h y desactivar la hora de conexión de la leva 2.
-        </p>
-        <img src="images/Parametros.jpg" alt="" width="339" height="513">
-        <p class="descripcion">
-          <br><strong>Respaldo del reloj en tiempo real</strong><br>
-          El reloj interno en tiempo real de LOGO! sigue funcionando incluso si se produce un corte de alimentación. El tiempo de respaldo depende de la temperatura ambiente y es típicamente de 20 días (para los dispositivos LOGO! 0BA7) o de 80 horas (para los dispositivos LOGO! 0BA6) a una temperatura ambiente de 25 C.
-          Los dispositivos LOGO! 0BA6 o posteriores soportan la opción de una tarjeta de batería o de memoria/batería combinada. Estas tarjetas respaldan el reloj en tiempo real durante varios años
+          El reloj interno en tiempo real de LOGO! sigue funcionando incluso si se produce un corte de alimentación. El tiempo de respaldo depende de la temperatura ambiente y es típicamente de 20 días (para los dispositivos LOGO! 0BA7 y superiores) o de 80 horas (para los dispositivos LOGO! 0BA6) a una temperatura ambiente de 25 C. Si se utiliza la tarjeta de batería LOGO! opcional o la tarjeta de memoria/batería combinada LOGO!, LOGO! puede respaldar la hora del reloj hasta dos años.
+          <br><br><strong>Particularidades acerca de la configuración</strong><br>
+          En los campos puede introducir valores numéricos para el mes y el día. Introduzca valores reales para los meses y días. De lo contrario, LOGO!Soft Comfort visualizará un aviso de error.
+          El icono <strong>Calendario</strong> ofrece una manera cómoda de ajustar la fecha. Se abre una ventana en la que puede seleccionar los días y los meses mediante botones.
+          <br><br><strong>Ejemplo de configuración</strong><br>
+          La salida de un LOGO! debe activarse anualmente desde el 1 de marzo hasta el 4 de abril y desde el 7 de julio hasta el 19 de noviembre. Para ello se requieren dos bloques que deben parametrizarse respectivamente para las fechas de conexión determinadas. Las salidas se combinan lógicamente mediante un bloque OR.
+          <img src="bloques_imgs/EjemploDeConfig_anual.png" alt=""><br>
+          Posicione dos funciones especiales "Temporizador anual" en la interfaz de programación. Configure 03.01 como tiempo de conexión y 04.04 como tiempo de desconexión para el primer temporizador anual. Configure 07.07 como tiempo de conexión y 11.19 como tiempo de desconexión para el segundo temporizador anual.<br>
+          Combine los bloques lógicamente mediante un bloque OR. El estado de señal de la salida del bloque OR es 1 si está activado por lo menos uno de los dos temporizadores anuales.<br><br>
+          <img src="bloques_imgs/EjemploOr_anual.png" alt="">
         </p>
         <h1 class="titulo">EJERCICIOS</h1>
         <h5>EJERCICIO 1</h5>
