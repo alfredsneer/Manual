@@ -58,20 +58,20 @@
                 <li class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Temporizadores</a>
                   <div class="dropdown-menu">
-                    <a href="index.html" class="dropdown-item">RETARDO A LA CONEXIÓN</a>
-                    <a href="index.html" class="dropdown-item">RETARDO A LA DESCONEXIÓN</a>
-                    <a href="index.html" class="dropdown-item">RETARDO A LA CONEXIÓN/DESCONEXIÓN</a>
-                    <a href="index.html" class="dropdown-item">RETARDO A LA CONEXIÓN CON MEMORIA</a>
-                    <a href="index.html" class="dropdown-item">RELÉ DE BARRIDO (SALIDA DE IMPULSOS)</a>
-                    <a href="index.html" class="dropdown-item">RELÉ DE BARRIDO DISPARADO POR FLANCOS</a>
-                    <a href="index.html" class="dropdown-item">GENERADOR DE IMPULSOS ASÍNCRONO</a>
-                    <a href="index.html" class="dropdown-item">GENERADOR ALEATORIO</a>
-                    <a href="index.html" class="dropdown-item">INTERRUPTOR DE ALUMBRADO PARA ESCALERA</a>
-                    <a href="index.html" class="dropdown-item">INTERRUPTOR BIFUNCIONAL</a>
-                    <a href="index.html" class="dropdown-item">INTERRUPTOR SEMANAL</a>
-                    <a href="index.html" class="dropdown-item">INTERRUPTOR ANUAL</a>
-                    <a href="index.html" class="dropdown-item">RELOJ ASTRONÓMICO</a>
-                    <a href="index.html" class="dropdown-item">CRONÓMETRO</a>
+                    <a href="Retardo_a_la_conexion.html" class="dropdown-item">RETARDO A LA CONEXIÓN</a>
+                    <a href="Retardo_a_la_desconexion.html" class="dropdown-item">RETARDO A LA DESCONEXIÓN</a>
+                    <a href="Retardo_a_la_conexion-desconexion.html" class="dropdown-item">RETARDO A LA CONEXIÓN/DESCONEXIÓN</a>
+                    <a href="Retardo_a_la_conexion_con_memoria.html" class="dropdown-item">RETARDO A LA CONEXIÓN CON MEMORIA</a>
+                    <a href="Rele_de_barrido.html" class="dropdown-item">RELÉ DE BARRIDO (SALIDA DE IMPULSOS)</a>
+                    <a href="Rele_de_barrido_flancos.html" class="dropdown-item">RELÉ DE BARRIDO DISPARADO POR FLANCOS</a>
+                    <a href="Generador_de_impulsos_asincrono.html" class="dropdown-item">GENERADOR DE IMPULSOS ASÍNCRONO</a>
+                    <a href="Generador_aleatorio.html" class="dropdown-item">GENERADOR ALEATORIO</a>
+                    <a href="Interruptor_de_alumbrado_p_escalera.html" class="dropdown-item">INTERRUPTOR DE ALUMBRADO PARA ESCALERA</a>
+                    <a href="Interruptor_bifuncional.html" class="dropdown-item">INTERRUPTOR BIFUNCIONAL</a>
+                    <a href="Interruptor_semanal.html" class="dropdown-item">INTERRUPTOR SEMANAL</a>
+                    <a href="Interruptor_anual.html" class="dropdown-item">INTERRUPTOR ANUAL</a>
+                    <a href="Reloj_astronomico.html" class="dropdown-item">RELOJ ASTRONÓMICO</a>
+                    <a href="Cronometro.html" class="dropdown-item">CRONÓMETRO</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -128,10 +128,12 @@
 <main class="contenedor">
     <section class="bloque">
       <div class="texto">
-        <h1 class="titulo">RETARDO A LA CONEXIÓN</h1>
+        <h1 class="titulo">TEMPORIZADOR SEMANAL</h1>
         <p class="descripcion">
-          <strong>Descripción Breve</strong><br><br>
-          La salida no se activa hasta que ha transcurrido un tiempo de retardo configurado.
+          <strong>Cuidado</strong>
+          El LOGO! debe disponer de un reloj interno en tiempo real para poder utilizar esta función especial
+          <strong>Descripción Breve</strong><br>
+          La salida se controla mediante una fecha de activación y desactivación configurable. Esta función soporta cualquier combinación posible de días de la semana.
         </p>
 <table class="tabla-bloque">
   <thead>
@@ -142,33 +144,66 @@
   </thead>
   <tbody>
     <tr>
-      <td>Entrada Trg</td>
-      <td>La entrada Trg (Trigger) dispara el temporizador de retardo a la conexión.</td>
+      <td>Parámetros No1,, No2, No3</td>
+      <td>A través de los parámetros No1, No2, No3 se ajustan los momentos de conexión y desconexión de cada una de las levas ("Nocken" en alemán) del temporizador semanal. Para cada leva se especifican el día de la semana y la hora de conexión y desconexión.</td>
     </tr>
     <tr>
-      <td>Parámetro</td>
+      <td>Par</td>
       <td>
-        T: tiempo de retardo tras el que se activa la salida (transición de la señal de salida de 0 a 1).<br>
-        Remanencia activada = el estado se guarda de forma remanente.
+        Indique si, al ser activado, el temporizador semanal debe funcionar durante un ciclo y desactivarse luego. El parámetro de impulso es válido para las tres levas
       </td>
     </tr>
     <tr>
       <td>Salida Q</td>
-      <td>Q se activa una vez expirado el tiempo parametrizado, si Trg sigue activada.</td>
+      <td>Q se activa cuando se acciona la leva configurada</td>
     </tr>
   </tbody>
 </table>
-
-        <p class="extra">
-La transición de 0 a 1 en la entrada Trg dispara el tiempo Ta (el tiempo actual en LOGO!).
-Si la entrada Trg sigue puesta a 1 por lo menos durante el tiempo T configurado, la salida se pone a 1 una vez expirado el tiempo T (la salida se activa con retardo respecto a la entrada).
-El tiempo se reinicializa si el estado de la entrada Trg cambia nuevamente a 0 antes de que expire el tiempo T.
-La salida se pone nuevamente a 0 cuando la señal en la entrada Trg es 0.
+        <br>
+        <p class="descripcion"><strong>Cronograma (tres ejemplos prácticos)</strong></p>
+        <img src="images/Cronograma.jpg" alt="" width="600" height="280">
+        <p class="descripcion">
+          <strong>Descripción de la función</strong><br>
+          Cada temporizador semanal está equipado con tres levas. Para cada una de estas puede configurarse una intervalo de tiempo. Mediante las levas se predeterminan los momentos de conexión y desconexión. En un determinado momento, el temporizador semanal activa la salida, siempre y cuando esta no esté activada aún.
+          El temporizador semanal desactiva la salida en el momento de desconexión si este se ha configurado, o bien al final del ciclo si se ha especificado una salida de impulso. Si se ha definido un mismo momento de conexión y desconexión para un temporizador semanal, pero en distintas levas, se produce un conflicto. En este caso, la leva 3 tiene prioridad sobre la leva 2 y esta, a su vez, sobre la leva 1.
+          El estado de conexión del temporizador semanal depende del estado de las tres levas No1, No2 y No3
+          <br><strong>Momentos de conexión</strong><br>
+          El momento de conexión puede estar comprendido entre las 00:00 h y las 23:59 h. El momento de conexión también puede configurarse como señal de impulso. El bloque de temporizador se activa a la hora indicada durante un ciclo. Luego se desactiva la salida. En este caso, el momento de desconexión está desactivado, puesto que no se necesita.
+          <br><strong>Particularidades acerca de la configuración</strong><br>
+          El diálogo de propiedades del bloque contiene una ficha para cada una de las tres levas. Allí puede ajustar los días de la semana para las levas. Además, en cada ficha es posible definir el momento de conexión y desconexión de cada leva (en horas y minutos). Por tanto, el ciclo de conmutación mínimo es un minuto. En cada ficha también puede especificarse una salida de impulso para la leva.
+          Los momentos de conexión y desconexión pueden desactivarse individualmente, lo que permite alcanzar ciclos de conmutacion de más de un día. Por ejemplo, puede conectar el temporizador con la leva 1 el lunes a las 7:00 h y desconectarlo con la leva 2 el miércoles a las 13:07 h y desactivar la hora de conexión de la leva 2.
         </p>
+        <img src="images/Parametros.jpg" alt="" width="339" height="513">
+        <p class="descripcion">
+          <br><strong>Respaldo del reloj en tiempo real</strong><br>
+          El reloj interno en tiempo real de LOGO! sigue funcionando incluso si se produce un corte de alimentación. El tiempo de respaldo depende de la temperatura ambiente y es típicamente de 20 días (para los dispositivos LOGO! 0BA7) o de 80 horas (para los dispositivos LOGO! 0BA6) a una temperatura ambiente de 25 C.
+          Los dispositivos LOGO! 0BA6 o posteriores soportan la opción de una tarjeta de batería o de memoria/batería combinada. Estas tarjetas respaldan el reloj en tiempo real durante varios años
+        </p>
+        <h1 class="titulo">EJERCICIOS</h1>
+        <h5>EJERCICIO 1</h5>
+        <ul style="list-style-type: disc;">
+          <li></li>
+        </ul>
+        <h5>EJERCICIO 2</h5>
+        <ul style="list-style-type: disc;">
+          <li></li>
+        </ul>
+        <h1 class="titulo">SOLUCIÓN DE LOS EJERCICIOS</h1>
+        <div class="video-container">
+          <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/hmT_tLC2vuM" 
+          title="Video de YouTube" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+          </iframe>
+        </div>
       </div>
 
       <div class="imagen">
-        <img src="bloques_imgs/Retardo a la conexión.jpg" alt="Imagen del bloque" />
+        <img src="bloques_imgs/Interruptor bifuncional.jpg" alt="Imagen del bloque" />
         <p class="pie">Retardo a la conexión</p>
       </div>
     </section>
