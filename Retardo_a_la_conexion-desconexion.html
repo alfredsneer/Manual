@@ -12,7 +12,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>PLC</title>
+  <title>PLC</title>    
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -69,9 +69,9 @@
                     <a href="Interruptor_de_alumbrado_p_escalera.html" class="dropdown-item">INTERRUPTOR DE ALUMBRADO PARA ESCALERA</a>
                     <a href="Interruptor_bifuncional.html" class="dropdown-item">INTERRUPTOR BIFUNCIONAL</a>
                     <a href="Interruptor_semanal.html" class="dropdown-item">INTERRUPTOR SEMANAL</a>
-                    <a href="index.html" class="dropdown-item">INTERRUPTOR ANUAL</a>
-                    <a href="index.html" class="dropdown-item">RELOJ ASTRONÓMICO</a>
-                    <a href="index.html" class="dropdown-item">CRONÓMETRO</a>
+                    <a href="Interruptor_anual.html" class="dropdown-item">INTERRUPTOR ANUAL</a>
+                    <a href="Reloj_astronomico.html" class="dropdown-item">RELOJ ASTRONÓMICO</a>
+                    <a href="Cronometro.html" class="dropdown-item">CRONÓMETRO</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -130,8 +130,8 @@
       <div class="texto">
         <h1 class="titulo">RETARDO A LA CONEXIÓN/DESCONEXIÓN</h1>
         <p class="descripcion">
-          <strong>Descripción Breve</strong><br><br>
-          La salida no se activa hasta que ha transcurrido un tiempo de retardo configurado.
+          <strong>Descripción Breve</strong><br>
+          El bloque de función de retardo a la conexión/desconexión puede activar una salida al cabo de un tiempo de retardo a la conexión configurado y desactivarla tras expirar un segundo tiempo configurado.
         </p>
 <table class="tabla-bloque">
   <thead>
@@ -143,7 +143,8 @@
   <tbody>
     <tr>
       <td>Entrada Trg</td>
-      <td>La entrada Trg (Trigger) dispara el temporizador de retardo a la conexión.</td>
+      <td>Un flanco ascendente (transición de 0 a 1) en la entrada Trg (Trigger) inicia el retardo a la conexión.
+          El retardo a la desconexión se inicia con un flanco descendente (transición de 1 a) </td>
     </tr>
     <tr>
       <td>Parámetro</td>
@@ -154,22 +155,94 @@
     </tr>
     <tr>
       <td>Salida Q</td>
-      <td>Q se activa una vez expirado el tiempo parametrizado, si Trg sigue activada.</td>
+      <td>
+        Q se activa una vez transcurrido el tiempo configurado T H si la entrada Trg sigue activada. Se desactiva de nuevo tras expirar el tiempo T L si, entretanto, Trg no se ha vuelto a activar.</td>
     </tr>
   </tbody>
 </table>
-
-        <p class="extra">
-La transición de 0 a 1 en la entrada Trg dispara el tiempo Ta (el tiempo actual en LOGO!).
-Si la entrada Trg sigue puesta a 1 por lo menos durante el tiempo T configurado, la salida se pone a 1 una vez expirado el tiempo T (la salida se activa con retardo respecto a la entrada).
-El tiempo se reinicializa si el estado de la entrada Trg cambia nuevamente a 0 antes de que expire el tiempo T.
-La salida se pone nuevamente a 0 cuando la señal en la entrada Trg es 0.
+<br>
+        <p class="descripcion">
+          <br>
+          <strong>Parámetro TH y TL</strong>
         </p>
+        <p class="extra">
+          El valor real de otra función preprogramada puede proporcionar los tiempos de retardo a la conexión y desconexión 
+          para los parámetros TH y TL:
+        </p>
+        <ul style="list-style-type: square;">
+            <li>Comparador analógico: Ax - Ay</li>
+            <li>Conmutador analógico de valor umbral: Ax</li>
+            <li>Amplificador analógico: Ax</li>
+            <li>Multiplexor analógico: AQ</li>
+            <li>Rampa analógica: AQ</li>   
+            <li>Instrucción aritmética: AQ</li>
+            <li>Regulador PI: AQ</li>
+            <li>Contador adelante/atrás: Cnt</li>
+            <br>
+            <p class="descripcion">
+              <strong>En los dispositivos 0BA7 y superiores se pueden utilizar adicionalmente los valores reales de las siguientes funciones preprogramadas:</strong>
+            </p>
+            <ul style="list-style-type: disc;">
+            <li>Retardo a la conexión: Ta</li>
+            <li>Retardo a la desconexión: Ta</li>
+            <li>Retardo a la conexión/desconexión: Ta</li>
+            <li>Retardo a la conexión con memoria: Ta</li>
+            <li>Relé de barrido (salida de impulso): Ta</li>
+            <li>Relé de barrido activado por flancos: Ta</li>
+            <li>Generador de impulsos asíncrono: Ta</li>
+            <li>Interruptor de alumbrado para escalera: Ta</li>
+            <li>Interruptor multifuncional: Ta</li>
+            <li>Cronómetro: AQ</li>
+            <li>Filtro analógico: AQ</li>
+            <li>Valor medio: AQ</li>
+            <li>Máx/Mín: AQ</li>
+            <li>Selector de umbral: Fre</li>
+            </ul>          
+        </ul>
+        <p>Seleccione la función deseada mediante el número de bloque.</p>
+        <p>Una transición de 0 a 1 en la entrada Trg inicia el tiempo TH.
+           Si la entrada Trg sigue puesta a 1 por lo menos durante el tiempo configurado TH, LOGO! pone la salida a 1 una vez expirado dicho tiempo (la salida se activa con retardo respecto a la entrada).
+           Si el estado de la entrada Trg cambia nuevamente a 0 antes de que transcurra el tiempo TH, este se reinicializa.
+           La transición de 1 a 0 en la salida inicia el tiempo TL.
+           Si la entrada Trg sigue puesta a 0 por lo menos durante el tiempo configurado TL, la salida se pone a 0 una vez expirado dicho tiempo (la salida se desactiva con retardo respecto a la entrada).
+           Si el estado de la entrada Trg cambia nuevamente a 1 antes de expirar el tiempo TL, este se reinicializa.</p>
+        <h1 class="titulo">EJERCICIOS</h1>
+        <h5>EJERCICIO 1</h5>
+        <ul style="list-style-type: disc;">
+          <li>Se requiere de un botón para dar inicio al cirtuito</li>
+          <li>Mediante un paro se detiene el circuito al instante</li>
+          <li>Colocar un OL's (Overload) para protección del circuito</li>
+          <li>Un motor activa la banda de producción que avanzará por 10 segundos</li>
+          <li>Al terminar el tiempo transcurrido, se activa otra banda de producción por 3 segundos para finalizar el empaquetado</li>
+        </ul>
+        <br>
+        <h5>EJERCICIO 2</h5>
+        <ul style="list-style-type: disc;">
+          <li>Se requiere de un botón para dar inicio al cirtuito</li>
+          <li>Mediante un paro se detiene el circuito al instante</li>
+          <li>Un motor enciende un ventilador para refrigerado de carne cada 10 segundos</li>
+          <li>Después del tiempo establecido se apaga y vuelve a hacer el conteo después de 10 segundos de descanso, esto lo hace automáticamente.</li>
+          <li>Coloca un OLS para protección del circuito.</li>          
+        </ul>
+        <br><br>
+        <h1 class="titulo">SOLUCIÓN DE LOS EJERCICIOS</h1>
+        <div class="video-container">
+          <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/hmT_tLC2vuM" 
+          title="Video de YouTube" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+          </iframe>
+        </div>           
       </div>
-
       <div class="imagen">
         <img src="bloques_imgs/Retardo a la conexión.jpg" alt="Imagen del bloque" />
         <p class="pie">Retardo a la conexión</p>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div>
     </section>
   </main>
